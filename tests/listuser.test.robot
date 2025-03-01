@@ -9,7 +9,7 @@ Test Setup    Set Environment Variables
 
 *** Test Cases ***
 API GET Users Returns 200 OK
-    [Tags]    LIST
+    [Tags]    list
     ${status}    ${response_body}    Get Users
 	Should Be Equal As Numbers    ${status}    200
     Should Be True    ${response_body} != []
@@ -24,7 +24,7 @@ API GET Users Returns 200 OK
     END
 
 API GET Specific User Returns 200 OK
-    [Tags]    LIST
+    [Tags]    list
     ${status}    ${response_body}    Get Specific User
 	Should Be Equal As Numbers    ${status}    200
     Should Be True    isinstance(${response_body}, dict)
@@ -36,7 +36,7 @@ API GET Specific User Returns 200 OK
     Should Be Equal As Numbers    ${response_body["id"]}    ${user_id}
 
 API GET Nonexistent Specific User Returns 404 NOT FOUND
-    [Tags]    LIST
+    [Tags]    list
     ${expected_message}    Get Env    RESOURCE_NOT_FOUND_MESSAGE
     ${status}    ${response_body}    Get Nonexistent Specific User
 	Should Be Equal As Numbers    ${status}    404
@@ -44,7 +44,7 @@ API GET Nonexistent Specific User Returns 404 NOT FOUND
 	Should Be Equal As Strings    ${response_body["message"]}    ${expected_message}
 
 API GET User With Non-Numeric ID Returns 404 NOT FOUND
-    [Tags]    LIST
+    [Tags]    list
     ${expected_message}    Get Env    RESOURCE_NOT_FOUND_MESSAGE
     ${status}    ${response_body}    Get User with Non-Numeric ID
 	Should Be Equal As Numbers    ${status}    404
@@ -52,7 +52,7 @@ API GET User With Non-Numeric ID Returns 404 NOT FOUND
 	Should Be Equal As Strings    ${response_body["message"]}    ${expected_message}
 
 API GET Users With Invalid Token Returns 401 UNAUTHORIZED
-    [Tags]    LIST
+    [Tags]    list
     ${expected_message}    Get Env    INVALID_TOKEN_MESSAGE
     ${status}    ${response_body}    Get Users With Invalid Token
 	Should Be Equal As Numbers    ${status}    401
