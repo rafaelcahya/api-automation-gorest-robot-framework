@@ -1,0 +1,1530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-04-03T19:07:42.221829" rpa="false" schemaversion="5">
+<suite id="s1" name="Listuser.Test" source="C:\.Cahya\learn\automation testing\gorest-api-robot-framework\tests\listuser.test.robot">
+<test id="s1-t1" name="API GET Users Returns 200 OK" line="11">
+<kw name="Set Environment Variables" owner="variables" type="SETUP">
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.603779" level="INFO">${BASE_URL} = https://gorest.co.in/public/v2/users/</msg>
+<var>${BASE_URL}</var>
+<arg>BASE_URL</arg>
+<status status="PASS" start="2025-04-03T19:07:42.602784" elapsed="0.001024"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.603969" level="INFO">${BEARER_TOKEN} = 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076</msg>
+<var>${BEARER_TOKEN}</var>
+<arg>BEARER_TOKEN</arg>
+<status status="PASS" start="2025-04-03T19:07:42.603891" elapsed="0.000092"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.604084" level="INFO">${ACCEPT} = application/json</msg>
+<var>${ACCEPT}</var>
+<arg>ACCEPT</arg>
+<status status="PASS" start="2025-04-03T19:07:42.604031" elapsed="0.000064"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.604187" level="INFO">${CONTENT_TYPE} = application/json</msg>
+<var>${CONTENT_TYPE}</var>
+<arg>CONTENT_TYPE</arg>
+<status status="PASS" start="2025-04-03T19:07:42.604139" elapsed="0.000058"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.604290" level="INFO">${USER_ID} = 7716191</msg>
+<var>${USER_ID}</var>
+<arg>USER_ID</arg>
+<status status="PASS" start="2025-04-03T19:07:42.604240" elapsed="0.000060"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.604388" level="INFO">${USER_ID2} = 7716201</msg>
+<var>${USER_ID2}</var>
+<arg>USER_ID2</arg>
+<status status="PASS" start="2025-04-03T19:07:42.604340" elapsed="0.000060"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.604483" level="INFO">${NON_NUMERIC_ID} = test</msg>
+<var>${NON_NUMERIC_ID}</var>
+<arg>NON_NUMERIC_ID</arg>
+<status status="PASS" start="2025-04-03T19:07:42.604438" elapsed="0.000055"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.604574" level="INFO">${USER_NOT_FOUND_ID} = 83764234234</msg>
+<var>${USER_NOT_FOUND_ID}</var>
+<arg>USER_NOT_FOUND_ID</arg>
+<status status="PASS" start="2025-04-03T19:07:42.604530" elapsed="0.000057"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.604666" level="INFO">${INVALID_TOKEN} = 8716298476192763401640178263</msg>
+<var>${INVALID_TOKEN}</var>
+<arg>INVALID_TOKEN</arg>
+<status status="PASS" start="2025-04-03T19:07:42.604623" elapsed="0.000053"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.604759" level="INFO">${REGISTERED_EMAIL} = Hall@test.com</msg>
+<var>${REGISTERED_EMAIL}</var>
+<arg>REGISTERED_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:42.604711" elapsed="0.000057"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.604849" level="INFO">${INVALID_EMAIL} = invalid-email-format</msg>
+<var>${INVALID_EMAIL}</var>
+<arg>INVALID_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:42.604803" elapsed="0.000055"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.604943" level="INFO">${LONG_EMAIL} = celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@test.co...</msg>
+<var>${LONG_EMAIL}</var>
+<arg>LONG_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:42.604897" elapsed="0.000056"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.605033" level="INFO">${lONG_INVALID_EMAIL} = celine01celine01celine01 celine01celine01celine01celine 01celine01celine01celine01 celine01celine01celine01celine01 celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@tes...</msg>
+<var>${lONG_INVALID_EMAIL}</var>
+<arg>lONG_INVALID_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:42.604989" elapsed="0.000053"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.605207" level="INFO">${BASE_URL} = https://gorest.co.in/public/v2/users/</msg>
+<arg>${BASE_URL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.605099" elapsed="0.000127"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.605360" level="INFO">${BEARER_TOKEN} = 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076</msg>
+<arg>${BEARER_TOKEN}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.605277" elapsed="0.000100"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.605483" level="INFO">${ACCEPT} = application/json</msg>
+<arg>${ACCEPT}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.605418" elapsed="0.000080"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.605604" level="INFO">${CONTENT_TYPE} = application/json</msg>
+<arg>${CONTENT_TYPE}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.605537" elapsed="0.000082"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.605720" level="INFO">${USER_ID} = 7716191</msg>
+<arg>${USER_ID}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.605657" elapsed="0.000077"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.605841" level="INFO">${USER_ID2} = 7716201</msg>
+<arg>${USER_ID2}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.605777" elapsed="0.000078"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.605961" level="INFO">${NON_NUMERIC_ID} = test</msg>
+<arg>${NON_NUMERIC_ID}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.605892" elapsed="0.000084"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.606082" level="INFO">${USER_NOT_FOUND_ID} = 83764234234</msg>
+<arg>${USER_NOT_FOUND_ID}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.606013" elapsed="0.000084"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.606209" level="INFO">${INVALID_TOKEN} = 8716298476192763401640178263</msg>
+<arg>${INVALID_TOKEN}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.606137" elapsed="0.000087"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.606345" level="INFO">${REGISTERED_EMAIL} = Hall@test.com</msg>
+<arg>${REGISTERED_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.606278" elapsed="0.000081"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.606461" level="INFO">${INVALID_EMAIL} = invalid-email-format</msg>
+<arg>${INVALID_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.606397" elapsed="0.000079"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.606575" level="INFO">${LONG_EMAIL} = celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@test.co...</msg>
+<arg>${LONG_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.606512" elapsed="0.000182"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.606849" level="INFO">${lONG_INVALID_EMAIL} = celine01celine01celine01 celine01celine01celine01celine 01celine01celine01celine01 celine01celine01celine01celine01 celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@tes...</msg>
+<arg>${lONG_INVALID_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.606767" elapsed="0.000100"/>
+</kw>
+<status status="PASS" start="2025-04-03T19:07:42.602394" elapsed="0.004513"/>
+</kw>
+<kw name="Get Users" owner="listuser">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.607659" level="INFO">${headers} = {'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': 'Bearer 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076'}</msg>
+<var>${headers}</var>
+<arg>Accept=${ACCEPT}</arg>
+<arg>Content-Type=${CONTENT_TYPE}</arg>
+<arg>Authorization=Bearer ${BEARER_TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.607410" elapsed="0.000266"/>
+</kw>
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-04-03T19:07:42.890357" level="INFO">GET Request : url=https://gorest.co.in/public/v2/users/ 
+ path_url=/public/v2/users/ 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076'} 
+ body=None 
+ </msg>
+<msg time="2025-04-03T19:07:42.890511" level="INFO">GET Response : url=https://gorest.co.in/public/v2/users/ 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 03 Apr 2025 12:07:44 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0, private, must-revalidate', 'Etag': 'W/"efc0832346dbd2b60b81c4fe34c5014b"', 'Feature-Policy': "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'", 'Referrer-Policy': 'strict-origin-when-cross-origin', 'Vary': 'Origin', 'X-Content-Type-Options': 'nosniff', 'X-Download-Options': 'noopen', 'X-Frame-Options': 'SAMEORIGIN', 'X-Links-Current': 'https://gorest.co.in/public/v2/users?page=1', 'X-Links-Next': 'https://gorest.co.in/public/v2/users?page=2', 'X-Links-Previous': '', 'X-Pagination-Limit': '10', 'X-Pagination-Page': '1', 'X-Pagination-Pages': '295', 'X-Pagination-Total': '2943', 'X-Permitted-Cross-Domain-Policies': 'none', 'X-Ratelimit-Limit': '90', 'X-Ratelimit-Remaining': '79', 'X-Ratelimit-Reset': '1', 'X-Request-Id': '7ed02271-449c-4ff1-821e-8e74f0f04df1', 'X-Runtime': '0.118702', 'X-Xss-Protection': '0', 'Cf-Cache-Status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '92a872860926f8de-SIN', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body=[{"id":7811757,"name":"Sara","email":"Hall@test.com","gender":"female","status":"active"},{"id":7811756,"name":"Sarah","email":"vickie09@example.org","gender":"female","status":"active"},{"id":7811747,"name":"Jessica","email":"gutierrezdarren@example.org","gender":"female","status":"active"},{"id":7811744,"name":"Erin","email":"clee@example.org","gender":"female","status":"active"},{"id":7811739,"name":"Kelsey","email":"polson@example.org","gender":"female","status":"active"},{"id":7810826,"name":"The Hon. Dhanesh Gowda","email":"the_dhanesh_gowda_hon@jenkins.test","gender":"male","status":"active"},{"id":7810823,"name":"Chaaruchandra Menon MD","email":"menon_chaaruchandra_md@schimmel.test","gender":"male","status":"active"},{"id":7810822,"name":"Niranjan Abbott","email":"niranjan_abbott@brown-mueller.test","gender":"female","status":"inactive"},{"id":7810821,"name":"Prof. Kanak Mehra","email":"prof_kanak_mehra@west-durgan.test","gender":"female","status":"active"},{"id":7810820,"name":"Kumar Agarwal","email":"kumar_agarwal@beatty.example","gender":"female","status":"active"}] 
+ </msg>
+<msg time="2025-04-03T19:07:42.890615" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.607735" elapsed="0.282895"/>
+</kw>
+<return>
+<value>${response.status_code}</value>
+<value>${response.json()}</value>
+<status status="PASS" start="2025-04-03T19:07:42.890697" elapsed="0.000090"/>
+</return>
+<msg time="2025-04-03T19:07:42.891429" level="INFO">${status} = 200</msg>
+<msg time="2025-04-03T19:07:42.891464" level="INFO">${response_body} = [{'id': 7811757, 'name': 'Sara', 'email': 'Hall@test.com', 'gender': 'female', 'status': 'active'}, {'id': 7811756, 'name': 'Sarah', 'email': 'vickie09@example.org', 'gender': 'female', 'status': 'act...</msg>
+<var>${status}</var>
+<var>${response_body}</var>
+<status status="PASS" start="2025-04-03T19:07:42.607248" elapsed="0.284228"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.891835" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${status}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.891705" elapsed="0.000173"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${response_body} != []</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.892015" elapsed="0.000341"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>isinstance(${response_body}, list)</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.892456" elapsed="0.000211"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.892930" elapsed="0.000070"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>name</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.893048" elapsed="0.000055"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>email</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.893146" elapsed="0.000051"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>gender</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.893239" elapsed="0.000050"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>status</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.893329" elapsed="0.000048"/>
+</kw>
+<var name="${user}">{'id': 7811757, 'name': 'Sara', 'email': 'Hall@test.com', 'gender': 'female', 'status': 'active'}</var>
+<status status="PASS" start="2025-04-03T19:07:42.892882" elapsed="0.000511"/>
+</iter>
+<iter>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.893487" elapsed="0.000052"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>name</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.893579" elapsed="0.000047"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>email</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.893667" elapsed="0.000149"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>gender</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.893867" elapsed="0.000052"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>status</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.893959" elapsed="0.000050"/>
+</kw>
+<var name="${user}">{'id': 7811756, 'name': 'Sarah', 'email': 'vickie09@example.org', 'gender': 'female', 'status': 'active'}</var>
+<status status="PASS" start="2025-04-03T19:07:42.893452" elapsed="0.000572"/>
+</iter>
+<iter>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.894107" elapsed="0.000334"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>name</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.894495" elapsed="0.000052"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>email</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.894586" elapsed="0.000046"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>gender</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.894669" elapsed="0.000046"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>status</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.894752" elapsed="0.000044"/>
+</kw>
+<var name="${user}">{'id': 7811747, 'name': 'Jessica', 'email': 'gutierrezdarren@example.org', 'gender': 'female', 'status': 'active'}</var>
+<status status="PASS" start="2025-04-03T19:07:42.894077" elapsed="0.000734"/>
+</iter>
+<iter>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.894884" elapsed="0.000052"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>name</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.895002" elapsed="0.000050"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>email</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.895091" elapsed="0.000047"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>gender</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.895175" elapsed="0.000045"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>status</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.895257" elapsed="0.000044"/>
+</kw>
+<var name="${user}">{'id': 7811744, 'name': 'Erin', 'email': 'clee@example.org', 'gender': 'female', 'status': 'active'}</var>
+<status status="PASS" start="2025-04-03T19:07:42.894855" elapsed="0.000461"/>
+</iter>
+<iter>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.895388" elapsed="0.000046"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>name</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.895472" elapsed="0.000044"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>email</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.895553" elapsed="0.000057"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>gender</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.895653" elapsed="0.000065"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>status</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.895760" elapsed="0.000046"/>
+</kw>
+<var name="${user}">{'id': 7811739, 'name': 'Kelsey', 'email': 'polson@example.org', 'gender': 'female', 'status': 'active'}</var>
+<status status="PASS" start="2025-04-03T19:07:42.895359" elapsed="0.000465"/>
+</iter>
+<iter>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.895908" elapsed="0.000048"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>name</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.895993" elapsed="0.000052"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>email</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.896081" elapsed="0.000056"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>gender</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.896190" elapsed="0.000054"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>status</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.896295" elapsed="0.000072"/>
+</kw>
+<var name="${user}">{'id': 7810826, 'name': 'The Hon. Dhanesh Gowda', 'email': 'the_dhanesh_gowda_hon@jenkins.test', 'gender': 'male', 'status': 'active'}</var>
+<status status="PASS" start="2025-04-03T19:07:42.895879" elapsed="0.000505"/>
+</iter>
+<iter>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.896501" elapsed="0.000051"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>name</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.896590" elapsed="0.000047"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>email</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.896673" elapsed="0.000044"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>gender</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.896753" elapsed="0.000045"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>status</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.896850" elapsed="0.000046"/>
+</kw>
+<var name="${user}">{'id': 7810823, 'name': 'Chaaruchandra Menon MD', 'email': 'menon_chaaruchandra_md@schimmel.test', 'gender': 'male', 'status': 'active'}</var>
+<status status="PASS" start="2025-04-03T19:07:42.896442" elapsed="0.000471"/>
+</iter>
+<iter>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.897047" elapsed="0.000052"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>name</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.897147" elapsed="0.000049"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>email</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.897233" elapsed="0.000046"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>gender</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.897316" elapsed="0.000050"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>status</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.897403" elapsed="0.000043"/>
+</kw>
+<var name="${user}">{'id': 7810822, 'name': 'Niranjan Abbott', 'email': 'niranjan_abbott@brown-mueller.test', 'gender': 'female', 'status': 'inactive'}</var>
+<status status="PASS" start="2025-04-03T19:07:42.897013" elapsed="0.000448"/>
+</iter>
+<iter>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.897539" elapsed="0.000046"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>name</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.897621" elapsed="0.000043"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>email</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.897700" elapsed="0.000044"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>gender</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.897780" elapsed="0.000044"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>status</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.897863" elapsed="0.000044"/>
+</kw>
+<var name="${user}">{'id': 7810821, 'name': 'Prof. Kanak Mehra', 'email': 'prof_kanak_mehra@west-durgan.test', 'gender': 'female', 'status': 'active'}</var>
+<status status="PASS" start="2025-04-03T19:07:42.897503" elapsed="0.000419"/>
+</iter>
+<iter>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.897995" elapsed="0.000051"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>name</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.898084" elapsed="0.000047"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>email</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.898168" elapsed="0.000045"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>gender</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.898252" elapsed="0.000045"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${user}</arg>
+<arg>status</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.898334" elapsed="0.000045"/>
+</kw>
+<var name="${user}">{'id': 7810820, 'name': 'Kumar Agarwal', 'email': 'kumar_agarwal@beatty.example', 'gender': 'female', 'status': 'active'}</var>
+<status status="PASS" start="2025-04-03T19:07:42.897965" elapsed="0.000428"/>
+</iter>
+<var>${user}</var>
+<value>@{response_body}</value>
+<status status="PASS" start="2025-04-03T19:07:42.892764" elapsed="0.005643"/>
+</for>
+<tag>list</tag>
+<status status="PASS" start="2025-04-03T19:07:42.601324" elapsed="0.297232"/>
+</test>
+<test id="s1-t2" name="API GET Specific User Returns 200 OK" line="26">
+<kw name="Set Environment Variables" owner="variables" type="SETUP">
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.900869" level="INFO">${BASE_URL} = https://gorest.co.in/public/v2/users/</msg>
+<var>${BASE_URL}</var>
+<arg>BASE_URL</arg>
+<status status="PASS" start="2025-04-03T19:07:42.899825" elapsed="0.001063"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.901005" level="INFO">${BEARER_TOKEN} = 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076</msg>
+<var>${BEARER_TOKEN}</var>
+<arg>BEARER_TOKEN</arg>
+<status status="PASS" start="2025-04-03T19:07:42.900944" elapsed="0.000074"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.901126" level="INFO">${ACCEPT} = application/json</msg>
+<var>${ACCEPT}</var>
+<arg>ACCEPT</arg>
+<status status="PASS" start="2025-04-03T19:07:42.901072" elapsed="0.000068"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.901264" level="INFO">${CONTENT_TYPE} = application/json</msg>
+<var>${CONTENT_TYPE}</var>
+<arg>CONTENT_TYPE</arg>
+<status status="PASS" start="2025-04-03T19:07:42.901198" elapsed="0.000080"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.901392" level="INFO">${USER_ID} = 7716191</msg>
+<var>${USER_ID}</var>
+<arg>USER_ID</arg>
+<status status="PASS" start="2025-04-03T19:07:42.901330" elapsed="0.000076"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.901508" level="INFO">${USER_ID2} = 7716201</msg>
+<var>${USER_ID2}</var>
+<arg>USER_ID2</arg>
+<status status="PASS" start="2025-04-03T19:07:42.901455" elapsed="0.000063"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.901617" level="INFO">${NON_NUMERIC_ID} = test</msg>
+<var>${NON_NUMERIC_ID}</var>
+<arg>NON_NUMERIC_ID</arg>
+<status status="PASS" start="2025-04-03T19:07:42.901563" elapsed="0.000070"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.901752" level="INFO">${USER_NOT_FOUND_ID} = 83764234234</msg>
+<var>${USER_NOT_FOUND_ID}</var>
+<arg>USER_NOT_FOUND_ID</arg>
+<status status="PASS" start="2025-04-03T19:07:42.901689" elapsed="0.000074"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.901851" level="INFO">${INVALID_TOKEN} = 8716298476192763401640178263</msg>
+<var>${INVALID_TOKEN}</var>
+<arg>INVALID_TOKEN</arg>
+<status status="PASS" start="2025-04-03T19:07:42.901801" elapsed="0.000062"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.901967" level="INFO">${REGISTERED_EMAIL} = Hall@test.com</msg>
+<var>${REGISTERED_EMAIL}</var>
+<arg>REGISTERED_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:42.901898" elapsed="0.000083"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.902092" level="INFO">${INVALID_EMAIL} = invalid-email-format</msg>
+<var>${INVALID_EMAIL}</var>
+<arg>INVALID_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:42.902025" elapsed="0.000078"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.902197" level="INFO">${LONG_EMAIL} = celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@test.co...</msg>
+<var>${LONG_EMAIL}</var>
+<arg>LONG_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:42.902146" elapsed="0.000173"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:42.902429" level="INFO">${lONG_INVALID_EMAIL} = celine01celine01celine01 celine01celine01celine01celine 01celine01celine01celine01 celine01celine01celine01celine01 celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@tes...</msg>
+<var>${lONG_INVALID_EMAIL}</var>
+<arg>lONG_INVALID_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:42.902372" elapsed="0.000069"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.902592" level="INFO">${BASE_URL} = https://gorest.co.in/public/v2/users/</msg>
+<arg>${BASE_URL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.902494" elapsed="0.000115"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.902721" level="INFO">${BEARER_TOKEN} = 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076</msg>
+<arg>${BEARER_TOKEN}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.902651" elapsed="0.000089"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.902842" level="INFO">${ACCEPT} = application/json</msg>
+<arg>${ACCEPT}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.902781" elapsed="0.000075"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.902959" level="INFO">${CONTENT_TYPE} = application/json</msg>
+<arg>${CONTENT_TYPE}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.902894" elapsed="0.000079"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.903091" level="INFO">${USER_ID} = 7716191</msg>
+<arg>${USER_ID}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.903011" elapsed="0.000096"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.903210" level="INFO">${USER_ID2} = 7716201</msg>
+<arg>${USER_ID2}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.903148" elapsed="0.000076"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.903325" level="INFO">${NON_NUMERIC_ID} = test</msg>
+<arg>${NON_NUMERIC_ID}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.903262" elapsed="0.000078"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.903442" level="INFO">${USER_NOT_FOUND_ID} = 83764234234</msg>
+<arg>${USER_NOT_FOUND_ID}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.903377" elapsed="0.000079"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.903561" level="INFO">${INVALID_TOKEN} = 8716298476192763401640178263</msg>
+<arg>${INVALID_TOKEN}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.903493" elapsed="0.000082"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.903678" level="INFO">${REGISTERED_EMAIL} = Hall@test.com</msg>
+<arg>${REGISTERED_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.903611" elapsed="0.000080"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.903791" level="INFO">${INVALID_EMAIL} = invalid-email-format</msg>
+<arg>${INVALID_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.903729" elapsed="0.000076"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.903905" level="INFO">${LONG_EMAIL} = celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@test.co...</msg>
+<arg>${LONG_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.903841" elapsed="0.000079"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.904027" level="INFO">${lONG_INVALID_EMAIL} = celine01celine01celine01 celine01celine01celine01celine 01celine01celine01celine01 celine01celine01celine01celine01 celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@tes...</msg>
+<arg>${lONG_INVALID_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.903960" elapsed="0.000081"/>
+</kw>
+<status status="PASS" start="2025-04-03T19:07:42.899602" elapsed="0.004469"/>
+</kw>
+<kw name="Get Specific User" owner="listuser">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-03T19:07:42.904589" level="INFO">${headers} = {'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': 'Bearer 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076'}</msg>
+<var>${headers}</var>
+<arg>Accept=${ACCEPT}</arg>
+<arg>Content-Type=${CONTENT_TYPE}</arg>
+<arg>Authorization=Bearer ${BEARER_TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.904429" elapsed="0.000175"/>
+</kw>
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-04-03T19:07:43.321215" level="INFO">GET Request : url=https://gorest.co.in/public/v2/users/7716191 
+ path_url=/public/v2/users/7716191 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076'} 
+ body=None 
+ </msg>
+<msg time="2025-04-03T19:07:43.321291" level="INFO">GET Response : url=https://gorest.co.in/public/v2/users/7716191 
+ status=404, reason=Not Found 
+ headers={'Date': 'Thu, 03 Apr 2025 12:07:44 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '32', 'Connection': 'keep-alive', 'Cache-Control': 'no-cache', 'feature-policy': "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'", 'referrer-policy': 'strict-origin-when-cross-origin', 'vary': 'Origin', 'x-content-type-options': 'nosniff', 'x-download-options': 'noopen', 'x-frame-options': 'SAMEORIGIN', 'x-permitted-cross-domain-policies': 'none', 'x-ratelimit-limit': '90', 'x-ratelimit-remaining': '89', 'x-ratelimit-reset': '2', 'x-request-id': '4cf52f26-8ec4-4709-842e-5d208bbd07b4', 'x-runtime': '0.065234', 'x-xss-protection': '0', 'cf-cache-status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=SN%2BYipEG%2Fm5VCfesz9hyYM7WNcMGsl2p6F40YhmPw4nKoGuZJz4aeK8AwUtJAzFFm0dWZLdcjVeLgUmq%2BFnheohEfRPGOB0MNqkROxREWrA70qnP1bcQZ%2BGmHDt3UxM%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '92a87288097887e7-SIN', 'alt-svc': 'h3=":443"; ma=86400', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=21065&amp;min_rtt=19353&amp;rtt_var=10682&amp;sent=5&amp;recv=6&amp;lost=0&amp;retrans=0&amp;sent_bytes=2842&amp;recv_bytes=918&amp;delivery_rate=127068&amp;cwnd=252&amp;unsent_bytes=0&amp;cid=740fd4165fc06f30&amp;ts=374&amp;x=0"'} 
+ body={"message":"Resource not found"} 
+ </msg>
+<msg time="2025-04-03T19:07:43.321538" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}${USER_ID}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-04-03T19:07:42.904659" elapsed="0.416933"/>
+</kw>
+<return>
+<value>${response.status_code}</value>
+<value>${response.json()}</value>
+<status status="PASS" start="2025-04-03T19:07:43.321647" elapsed="0.000042"/>
+</return>
+<msg time="2025-04-03T19:07:43.322154" level="INFO">${status} = 404</msg>
+<msg time="2025-04-03T19:07:43.322177" level="INFO">${response_body} = {'message': 'Resource not found'}</msg>
+<var>${status}</var>
+<var>${response_body}</var>
+<status status="PASS" start="2025-04-03T19:07:42.904284" elapsed="0.417903"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.322523" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg time="2025-04-03T19:07:43.322606" level="FAIL">404.0 != 200.0</msg>
+<arg>${status}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="FAIL" start="2025-04-03T19:07:43.322394" elapsed="0.000325">404.0 != 200.0</status>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>isinstance(${response_body}, dict)</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2025-04-03T19:07:43.322922" elapsed="0.000025"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response_body}</arg>
+<arg>id</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2025-04-03T19:07:43.323087" elapsed="0.000015"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response_body}</arg>
+<arg>name</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2025-04-03T19:07:43.323195" elapsed="0.000011"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response_body}</arg>
+<arg>email</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2025-04-03T19:07:43.323288" elapsed="0.000009"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response_body}</arg>
+<arg>gender</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2025-04-03T19:07:43.323388" elapsed="0.000009"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response_body}</arg>
+<arg>status</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2025-04-03T19:07:43.323470" elapsed="0.000009"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${response_body["id"]}</arg>
+<arg>${user_id}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-04-03T19:07:43.323600" elapsed="0.000015"/>
+</kw>
+<tag>list</tag>
+<status status="FAIL" start="2025-04-03T19:07:42.899078" elapsed="0.424672">404.0 != 200.0</status>
+</test>
+<test id="s1-t3" name="API GET Nonexistent Specific User Returns 404 NOT FOUND" line="38">
+<kw name="Set Environment Variables" owner="variables" type="SETUP">
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.325746" level="INFO">${BASE_URL} = https://gorest.co.in/public/v2/users/</msg>
+<var>${BASE_URL}</var>
+<arg>BASE_URL</arg>
+<status status="PASS" start="2025-04-03T19:07:43.324646" elapsed="0.001122"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.325948" level="INFO">${BEARER_TOKEN} = 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076</msg>
+<var>${BEARER_TOKEN}</var>
+<arg>BEARER_TOKEN</arg>
+<status status="PASS" start="2025-04-03T19:07:43.325861" elapsed="0.000100"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.326066" level="INFO">${ACCEPT} = application/json</msg>
+<var>${ACCEPT}</var>
+<arg>ACCEPT</arg>
+<status status="PASS" start="2025-04-03T19:07:43.326015" elapsed="0.000062"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.326168" level="INFO">${CONTENT_TYPE} = application/json</msg>
+<var>${CONTENT_TYPE}</var>
+<arg>CONTENT_TYPE</arg>
+<status status="PASS" start="2025-04-03T19:07:43.326117" elapsed="0.000061"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.326258" level="INFO">${USER_ID} = 7716191</msg>
+<var>${USER_ID}</var>
+<arg>USER_ID</arg>
+<status status="PASS" start="2025-04-03T19:07:43.326215" elapsed="0.000053"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.326347" level="INFO">${USER_ID2} = 7716201</msg>
+<var>${USER_ID2}</var>
+<arg>USER_ID2</arg>
+<status status="PASS" start="2025-04-03T19:07:43.326304" elapsed="0.000055"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.326439" level="INFO">${NON_NUMERIC_ID} = test</msg>
+<var>${NON_NUMERIC_ID}</var>
+<arg>NON_NUMERIC_ID</arg>
+<status status="PASS" start="2025-04-03T19:07:43.326393" elapsed="0.000056"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.326538" level="INFO">${USER_NOT_FOUND_ID} = 83764234234</msg>
+<var>${USER_NOT_FOUND_ID}</var>
+<arg>USER_NOT_FOUND_ID</arg>
+<status status="PASS" start="2025-04-03T19:07:43.326484" elapsed="0.000064"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.326630" level="INFO">${INVALID_TOKEN} = 8716298476192763401640178263</msg>
+<var>${INVALID_TOKEN}</var>
+<arg>INVALID_TOKEN</arg>
+<status status="PASS" start="2025-04-03T19:07:43.326584" elapsed="0.000056"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.326718" level="INFO">${REGISTERED_EMAIL} = Hall@test.com</msg>
+<var>${REGISTERED_EMAIL}</var>
+<arg>REGISTERED_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:43.326674" elapsed="0.000054"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.326807" level="INFO">${INVALID_EMAIL} = invalid-email-format</msg>
+<var>${INVALID_EMAIL}</var>
+<arg>INVALID_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:43.326764" elapsed="0.000052"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.326894" level="INFO">${LONG_EMAIL} = celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@test.co...</msg>
+<var>${LONG_EMAIL}</var>
+<arg>LONG_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:43.326850" elapsed="0.000057"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.326989" level="INFO">${lONG_INVALID_EMAIL} = celine01celine01celine01 celine01celine01celine01celine 01celine01celine01celine01 celine01celine01celine01celine01 celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@tes...</msg>
+<var>${lONG_INVALID_EMAIL}</var>
+<arg>lONG_INVALID_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:43.326944" elapsed="0.000061"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.327146" level="INFO">${BASE_URL} = https://gorest.co.in/public/v2/users/</msg>
+<arg>${BASE_URL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.327057" elapsed="0.000109"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.327273" level="INFO">${BEARER_TOKEN} = 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076</msg>
+<arg>${BEARER_TOKEN}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.327207" elapsed="0.000081"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.327391" level="INFO">${ACCEPT} = application/json</msg>
+<arg>${ACCEPT}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.327328" elapsed="0.000079"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.327630" level="INFO">${CONTENT_TYPE} = application/json</msg>
+<arg>${CONTENT_TYPE}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.327550" elapsed="0.000098"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.327758" level="INFO">${USER_ID} = 7716191</msg>
+<arg>${USER_ID}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.327691" elapsed="0.000083"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.327878" level="INFO">${USER_ID2} = 7716201</msg>
+<arg>${USER_ID2}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.327813" elapsed="0.000080"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.327997" level="INFO">${NON_NUMERIC_ID} = test</msg>
+<arg>${NON_NUMERIC_ID}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.327930" elapsed="0.000088"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.328127" level="INFO">${USER_NOT_FOUND_ID} = 83764234234</msg>
+<arg>${USER_NOT_FOUND_ID}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.328059" elapsed="0.000083"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.328253" level="INFO">${INVALID_TOKEN} = 8716298476192763401640178263</msg>
+<arg>${INVALID_TOKEN}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.328181" elapsed="0.000091"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.328381" level="INFO">${REGISTERED_EMAIL} = Hall@test.com</msg>
+<arg>${REGISTERED_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.328313" elapsed="0.000084"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.328499" level="INFO">${INVALID_EMAIL} = invalid-email-format</msg>
+<arg>${INVALID_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.328435" elapsed="0.000078"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.328619" level="INFO">${LONG_EMAIL} = celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@test.co...</msg>
+<arg>${LONG_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.328552" elapsed="0.000082"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.328744" level="INFO">${lONG_INVALID_EMAIL} = celine01celine01celine01 celine01celine01celine01celine 01celine01celine01celine01 celine01celine01celine01celine01 celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@tes...</msg>
+<arg>${lONG_INVALID_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.328674" elapsed="0.000085"/>
+</kw>
+<status status="PASS" start="2025-04-03T19:07:43.324503" elapsed="0.004288"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.329152" level="INFO">${expected_message} = Resource not found</msg>
+<var>${expected_message}</var>
+<arg>RESOURCE_NOT_FOUND_MESSAGE</arg>
+<status status="PASS" start="2025-04-03T19:07:43.329001" elapsed="0.000176"/>
+</kw>
+<kw name="Get Nonexistent Specific User" owner="listuser">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.329777" level="INFO">${headers} = {'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': 'Bearer 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076'}</msg>
+<var>${headers}</var>
+<arg>Accept=${ACCEPT}</arg>
+<arg>Content-Type=${CONTENT_TYPE}</arg>
+<arg>Authorization=Bearer ${BEARER_TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.329605" elapsed="0.000188"/>
+</kw>
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-04-03T19:07:43.781839" level="INFO">GET Request : url=https://gorest.co.in/public/v2/users/test 
+ path_url=/public/v2/users/test 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076'} 
+ body=None 
+ </msg>
+<msg time="2025-04-03T19:07:43.781951" level="INFO">GET Response : url=https://gorest.co.in/public/v2/users/test 
+ status=404, reason=Not Found 
+ headers={'Date': 'Thu, 03 Apr 2025 12:07:45 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '32', 'Connection': 'keep-alive', 'Cache-Control': 'no-cache', 'feature-policy': "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'", 'referrer-policy': 'strict-origin-when-cross-origin', 'vary': 'Origin', 'x-content-type-options': 'nosniff', 'x-download-options': 'noopen', 'x-frame-options': 'SAMEORIGIN', 'x-permitted-cross-domain-policies': 'none', 'x-ratelimit-limit': '90', 'x-ratelimit-remaining': '88', 'x-ratelimit-reset': '2', 'x-request-id': '5db8376d-4a08-442d-aeff-cd68b6477d6c', 'x-runtime': '0.053159', 'x-xss-protection': '0', 'cf-cache-status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=zgumCOH%2Fl%2B%2FP55toW7C3vtoG1y64AUT6ohH5i24cDm7eteb7%2Bdlh4PzgMn0jFFkCuln9E6d77168cvEw2dEKRwHV%2BLvW4DMzXiVgXTpHZyvUZ1GSu3iluYZxgqio0Us%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '92a8728a9a43fe10-SIN', 'alt-svc': 'h3=":443"; ma=86400', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=19333&amp;min_rtt=18944&amp;rtt_var=7882&amp;sent=5&amp;recv=6&amp;lost=0&amp;retrans=0&amp;sent_bytes=2843&amp;recv_bytes=915&amp;delivery_rate=190424&amp;cwnd=252&amp;unsent_bytes=0&amp;cid=7caccaa9fbef8f15&amp;ts=364&amp;x=0"'} 
+ body={"message":"Resource not found"} 
+ </msg>
+<msg time="2025-04-03T19:07:43.782318" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}${NON_NUMERIC_ID}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.329866" elapsed="0.452470"/>
+</kw>
+<return>
+<value>${response.status_code}</value>
+<value>${response.json()}</value>
+<status status="PASS" start="2025-04-03T19:07:43.782395" elapsed="0.000040"/>
+</return>
+<msg time="2025-04-03T19:07:43.782914" level="INFO">${status} = 404</msg>
+<msg time="2025-04-03T19:07:43.782937" level="INFO">${response_body} = {'message': 'Resource not found'}</msg>
+<var>${status}</var>
+<var>${response_body}</var>
+<status status="PASS" start="2025-04-03T19:07:43.329413" elapsed="0.453535"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.783351" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${status}</arg>
+<arg>404</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.783197" elapsed="0.000210"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response_body}</arg>
+<arg>message</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.783651" elapsed="0.000164"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_body["message"]}</arg>
+<arg>${expected_message}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.783972" elapsed="0.000426"/>
+</kw>
+<tag>list</tag>
+<status status="PASS" start="2025-04-03T19:07:43.324170" elapsed="0.460327"/>
+</test>
+<test id="s1-t4" name="API GET User With Non-Numeric ID Returns 404 NOT FOUND" line="46">
+<kw name="Set Environment Variables" owner="variables" type="SETUP">
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.786185" level="INFO">${BASE_URL} = https://gorest.co.in/public/v2/users/</msg>
+<var>${BASE_URL}</var>
+<arg>BASE_URL</arg>
+<status status="PASS" start="2025-04-03T19:07:43.785211" elapsed="0.000992"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.786327" level="INFO">${BEARER_TOKEN} = 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076</msg>
+<var>${BEARER_TOKEN}</var>
+<arg>BEARER_TOKEN</arg>
+<status status="PASS" start="2025-04-03T19:07:43.786267" elapsed="0.000072"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.786438" level="INFO">${ACCEPT} = application/json</msg>
+<var>${ACCEPT}</var>
+<arg>ACCEPT</arg>
+<status status="PASS" start="2025-04-03T19:07:43.786385" elapsed="0.000063"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.786535" level="INFO">${CONTENT_TYPE} = application/json</msg>
+<var>${CONTENT_TYPE}</var>
+<arg>CONTENT_TYPE</arg>
+<status status="PASS" start="2025-04-03T19:07:43.786490" elapsed="0.000062"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.786639" level="INFO">${USER_ID} = 7716191</msg>
+<var>${USER_ID}</var>
+<arg>USER_ID</arg>
+<status status="PASS" start="2025-04-03T19:07:43.786594" elapsed="0.000056"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.786733" level="INFO">${USER_ID2} = 7716201</msg>
+<var>${USER_ID2}</var>
+<arg>USER_ID2</arg>
+<status status="PASS" start="2025-04-03T19:07:43.786690" elapsed="0.000052"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.786822" level="INFO">${NON_NUMERIC_ID} = test</msg>
+<var>${NON_NUMERIC_ID}</var>
+<arg>NON_NUMERIC_ID</arg>
+<status status="PASS" start="2025-04-03T19:07:43.786777" elapsed="0.000055"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.786912" level="INFO">${USER_NOT_FOUND_ID} = 83764234234</msg>
+<var>${USER_NOT_FOUND_ID}</var>
+<arg>USER_NOT_FOUND_ID</arg>
+<status status="PASS" start="2025-04-03T19:07:43.786868" elapsed="0.000054"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.787005" level="INFO">${INVALID_TOKEN} = 8716298476192763401640178263</msg>
+<var>${INVALID_TOKEN}</var>
+<arg>INVALID_TOKEN</arg>
+<status status="PASS" start="2025-04-03T19:07:43.786960" elapsed="0.000054"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.787100" level="INFO">${REGISTERED_EMAIL} = Hall@test.com</msg>
+<var>${REGISTERED_EMAIL}</var>
+<arg>REGISTERED_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:43.787050" elapsed="0.000071"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.787207" level="INFO">${INVALID_EMAIL} = invalid-email-format</msg>
+<var>${INVALID_EMAIL}</var>
+<arg>INVALID_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:43.787161" elapsed="0.000057"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.787307" level="INFO">${LONG_EMAIL} = celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@test.co...</msg>
+<var>${LONG_EMAIL}</var>
+<arg>LONG_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:43.787262" elapsed="0.000055"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.787395" level="INFO">${lONG_INVALID_EMAIL} = celine01celine01celine01 celine01celine01celine01celine 01celine01celine01celine01 celine01celine01celine01celine01 celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@tes...</msg>
+<var>${lONG_INVALID_EMAIL}</var>
+<arg>lONG_INVALID_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:43.787352" elapsed="0.000054"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.787555" level="INFO">${BASE_URL} = https://gorest.co.in/public/v2/users/</msg>
+<arg>${BASE_URL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.787457" elapsed="0.000120"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.787741" level="INFO">${BEARER_TOKEN} = 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076</msg>
+<arg>${BEARER_TOKEN}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.787637" elapsed="0.000126"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.787908" level="INFO">${ACCEPT} = application/json</msg>
+<arg>${ACCEPT}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.787822" elapsed="0.000109"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.788074" level="INFO">${CONTENT_TYPE} = application/json</msg>
+<arg>${CONTENT_TYPE}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.787990" elapsed="0.000101"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.788197" level="INFO">${USER_ID} = 7716191</msg>
+<arg>${USER_ID}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.788134" elapsed="0.000077"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.788309" level="INFO">${USER_ID2} = 7716201</msg>
+<arg>${USER_ID2}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.788249" elapsed="0.000074"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.788424" level="INFO">${NON_NUMERIC_ID} = test</msg>
+<arg>${NON_NUMERIC_ID}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.788360" elapsed="0.000078"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.788545" level="INFO">${USER_NOT_FOUND_ID} = 83764234234</msg>
+<arg>${USER_NOT_FOUND_ID}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.788476" elapsed="0.000084"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.788675" level="INFO">${INVALID_TOKEN} = 8716298476192763401640178263</msg>
+<arg>${INVALID_TOKEN}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.788601" elapsed="0.000089"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.788794" level="INFO">${REGISTERED_EMAIL} = Hall@test.com</msg>
+<arg>${REGISTERED_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.788728" elapsed="0.000080"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.788921" level="INFO">${INVALID_EMAIL} = invalid-email-format</msg>
+<arg>${INVALID_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.788845" elapsed="0.000151"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.789109" level="INFO">${LONG_EMAIL} = celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@test.co...</msg>
+<arg>${LONG_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.789039" elapsed="0.000086"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.789232" level="INFO">${lONG_INVALID_EMAIL} = celine01celine01celine01 celine01celine01celine01celine 01celine01celine01celine01 celine01celine01celine01celine01 celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@tes...</msg>
+<arg>${lONG_INVALID_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.789164" elapsed="0.000094"/>
+</kw>
+<status status="PASS" start="2025-04-03T19:07:43.785079" elapsed="0.004212"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:43.789553" level="INFO">${expected_message} = Resource not found</msg>
+<var>${expected_message}</var>
+<arg>RESOURCE_NOT_FOUND_MESSAGE</arg>
+<status status="PASS" start="2025-04-03T19:07:43.789457" elapsed="0.000110"/>
+</kw>
+<kw name="Get User with Non-Numeric ID" owner="listuser">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-03T19:07:43.790010" level="INFO">${headers} = {'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': 'Bearer 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076'}</msg>
+<var>${headers}</var>
+<arg>Accept=${ACCEPT}</arg>
+<arg>Content-Type=${CONTENT_TYPE}</arg>
+<arg>Authorization=Bearer ${BEARER_TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.789847" elapsed="0.000179"/>
+</kw>
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-04-03T19:07:44.179220" level="INFO">GET Request : url=https://gorest.co.in/public/v2/users/83764234234 
+ path_url=/public/v2/users/83764234234 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076'} 
+ body=None 
+ </msg>
+<msg time="2025-04-03T19:07:44.179293" level="INFO">GET Response : url=https://gorest.co.in/public/v2/users/83764234234 
+ status=404, reason=Not Found 
+ headers={'Date': 'Thu, 03 Apr 2025 12:07:45 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Cache-Control': 'no-cache', 'Feature-Policy': "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'", 'Referrer-Policy': 'strict-origin-when-cross-origin', 'Vary': 'Origin', 'X-Content-Type-Options': 'nosniff', 'X-Download-Options': 'noopen', 'X-Frame-Options': 'SAMEORIGIN', 'X-Permitted-Cross-Domain-Policies': 'none', 'X-Ratelimit-Limit': '90', 'X-Ratelimit-Remaining': '87', 'X-Ratelimit-Reset': '3', 'X-Request-Id': '6d10c741-0241-49a4-9079-4e685323dbec', 'X-Runtime': '0.051986', 'X-Xss-Protection': '0', 'Cf-Cache-Status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '92a8728d6e823fa6-SIN', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"message":"Resource not found"} 
+ </msg>
+<msg time="2025-04-03T19:07:44.179384" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}${USER_NOT_FOUND_ID}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-04-03T19:07:43.790083" elapsed="0.389316"/>
+</kw>
+<return>
+<value>${response.status_code}</value>
+<value>${response.json()}</value>
+<status status="PASS" start="2025-04-03T19:07:44.179451" elapsed="0.000036"/>
+</return>
+<msg time="2025-04-03T19:07:44.179956" level="INFO">${status} = 404</msg>
+<msg time="2025-04-03T19:07:44.179980" level="INFO">${response_body} = {'message': 'Resource not found'}</msg>
+<var>${status}</var>
+<var>${response_body}</var>
+<status status="PASS" start="2025-04-03T19:07:43.789716" elapsed="0.390275"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-04-03T19:07:44.180413" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${status}</arg>
+<arg>404</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.180258" elapsed="0.000211"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response_body}</arg>
+<arg>message</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.180610" elapsed="0.000098"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_body["message"]}</arg>
+<arg>${expected_message}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.180835" elapsed="0.000281"/>
+</kw>
+<tag>list</tag>
+<status status="PASS" start="2025-04-03T19:07:43.784767" elapsed="0.396462"/>
+</test>
+<test id="s1-t5" name="API GET Users With Invalid Token Returns 401 UNAUTHORIZED" line="54">
+<kw name="Set Environment Variables" owner="variables" type="SETUP">
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:44.183217" level="INFO">${BASE_URL} = https://gorest.co.in/public/v2/users/</msg>
+<var>${BASE_URL}</var>
+<arg>BASE_URL</arg>
+<status status="PASS" start="2025-04-03T19:07:44.182082" elapsed="0.001154"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:44.183354" level="INFO">${BEARER_TOKEN} = 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076</msg>
+<var>${BEARER_TOKEN}</var>
+<arg>BEARER_TOKEN</arg>
+<status status="PASS" start="2025-04-03T19:07:44.183293" elapsed="0.000073"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:44.183454" level="INFO">${ACCEPT} = application/json</msg>
+<var>${ACCEPT}</var>
+<arg>ACCEPT</arg>
+<status status="PASS" start="2025-04-03T19:07:44.183407" elapsed="0.000057"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:44.183544" level="INFO">${CONTENT_TYPE} = application/json</msg>
+<var>${CONTENT_TYPE}</var>
+<arg>CONTENT_TYPE</arg>
+<status status="PASS" start="2025-04-03T19:07:44.183501" elapsed="0.000053"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:44.183632" level="INFO">${USER_ID} = 7716191</msg>
+<var>${USER_ID}</var>
+<arg>USER_ID</arg>
+<status status="PASS" start="2025-04-03T19:07:44.183589" elapsed="0.000052"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:44.183717" level="INFO">${USER_ID2} = 7716201</msg>
+<var>${USER_ID2}</var>
+<arg>USER_ID2</arg>
+<status status="PASS" start="2025-04-03T19:07:44.183675" elapsed="0.000051"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:44.183811" level="INFO">${NON_NUMERIC_ID} = test</msg>
+<var>${NON_NUMERIC_ID}</var>
+<arg>NON_NUMERIC_ID</arg>
+<status status="PASS" start="2025-04-03T19:07:44.183761" elapsed="0.000059"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:44.183896" level="INFO">${USER_NOT_FOUND_ID} = 83764234234</msg>
+<var>${USER_NOT_FOUND_ID}</var>
+<arg>USER_NOT_FOUND_ID</arg>
+<status status="PASS" start="2025-04-03T19:07:44.183854" elapsed="0.000051"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:44.183979" level="INFO">${INVALID_TOKEN} = 8716298476192763401640178263</msg>
+<var>${INVALID_TOKEN}</var>
+<arg>INVALID_TOKEN</arg>
+<status status="PASS" start="2025-04-03T19:07:44.183937" elapsed="0.000085"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:44.184110" level="INFO">${REGISTERED_EMAIL} = Hall@test.com</msg>
+<var>${REGISTERED_EMAIL}</var>
+<arg>REGISTERED_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:44.184062" elapsed="0.000058"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:44.184206" level="INFO">${INVALID_EMAIL} = invalid-email-format</msg>
+<var>${INVALID_EMAIL}</var>
+<arg>INVALID_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:44.184155" elapsed="0.000060"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:44.184290" level="INFO">${LONG_EMAIL} = celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@test.co...</msg>
+<var>${LONG_EMAIL}</var>
+<arg>LONG_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:44.184249" elapsed="0.000050"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:44.184376" level="INFO">${lONG_INVALID_EMAIL} = celine01celine01celine01 celine01celine01celine01celine 01celine01celine01celine01 celine01celine01celine01celine01 celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@tes...</msg>
+<var>${lONG_INVALID_EMAIL}</var>
+<arg>lONG_INVALID_EMAIL</arg>
+<status status="PASS" start="2025-04-03T19:07:44.184333" elapsed="0.000053"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:44.184513" level="INFO">${BASE_URL} = https://gorest.co.in/public/v2/users/</msg>
+<arg>${BASE_URL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.184432" elapsed="0.000097"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:44.184635" level="INFO">${BEARER_TOKEN} = 85ed37ec93fe784056f522ad209f6c1bbaf23f29ef836e5622785b108e42f076</msg>
+<arg>${BEARER_TOKEN}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.184570" elapsed="0.000081"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:44.184748" level="INFO">${ACCEPT} = application/json</msg>
+<arg>${ACCEPT}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.184688" elapsed="0.000074"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:44.184862" level="INFO">${CONTENT_TYPE} = application/json</msg>
+<arg>${CONTENT_TYPE}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.184799" elapsed="0.000078"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:44.184980" level="INFO">${USER_ID} = 7716191</msg>
+<arg>${USER_ID}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.184915" elapsed="0.000079"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:44.185099" level="INFO">${USER_ID2} = 7716201</msg>
+<arg>${USER_ID2}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.185032" elapsed="0.000081"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:44.185224" level="INFO">${NON_NUMERIC_ID} = test</msg>
+<arg>${NON_NUMERIC_ID}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.185151" elapsed="0.000088"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:44.185343" level="INFO">${USER_NOT_FOUND_ID} = 83764234234</msg>
+<arg>${USER_NOT_FOUND_ID}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.185276" elapsed="0.000082"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:44.185459" level="INFO">${INVALID_TOKEN} = 8716298476192763401640178263</msg>
+<arg>${INVALID_TOKEN}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.185394" elapsed="0.000080"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:44.185581" level="INFO">${REGISTERED_EMAIL} = Hall@test.com</msg>
+<arg>${REGISTERED_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.185510" elapsed="0.000087"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:44.185741" level="INFO">${INVALID_EMAIL} = invalid-email-format</msg>
+<arg>${INVALID_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.185635" elapsed="0.000122"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:44.185860" level="INFO">${LONG_EMAIL} = celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@test.co...</msg>
+<arg>${LONG_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.185795" elapsed="0.000080"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-04-03T19:07:44.185979" level="INFO">${lONG_INVALID_EMAIL} = celine01celine01celine01 celine01celine01celine01celine 01celine01celine01celine01 celine01celine01celine01celine01 celine01celine01celine01celine01celine01celine01celine01celine01celine01celine01@tes...</msg>
+<arg>${lONG_INVALID_EMAIL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.185912" elapsed="0.000081"/>
+</kw>
+<status status="PASS" start="2025-04-03T19:07:44.181944" elapsed="0.004075"/>
+</kw>
+<kw name="Get Env" owner="EnvLoader">
+<msg time="2025-04-03T19:07:44.186196" level="INFO">${expected_message} = Invalid token</msg>
+<var>${expected_message}</var>
+<arg>INVALID_TOKEN_MESSAGE</arg>
+<status status="PASS" start="2025-04-03T19:07:44.186138" elapsed="0.000068"/>
+</kw>
+<kw name="Get Users With Invalid Token" owner="listuser">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-03T19:07:44.186577" level="INFO">${headers} = {'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': 'Bearer 8716298476192763401640178263'}</msg>
+<var>${headers}</var>
+<arg>Accept=${ACCEPT}</arg>
+<arg>Content-Type=${CONTENT_TYPE}</arg>
+<arg>Authorization=Bearer ${INVALID_TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.186441" elapsed="0.000148"/>
+</kw>
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-04-03T19:07:44.611118" level="INFO">GET Request : url=https://gorest.co.in/public/v2/users/ 
+ path_url=/public/v2/users/ 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer 8716298476192763401640178263'} 
+ body=None 
+ </msg>
+<msg time="2025-04-03T19:07:44.611201" level="INFO">GET Response : url=https://gorest.co.in/public/v2/users/ 
+ status=401, reason=Unauthorized 
+ headers={'Date': 'Thu, 03 Apr 2025 12:07:46 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '27', 'Connection': 'keep-alive', 'Cache-Control': 'no-cache', 'feature-policy': "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'", 'referrer-policy': 'strict-origin-when-cross-origin', 'vary': 'Origin', 'x-content-type-options': 'nosniff', 'x-download-options': 'noopen', 'x-frame-options': 'SAMEORIGIN', 'x-permitted-cross-domain-policies': 'none', 'x-request-id': 'c384cfed-c50c-48f7-8622-e0c8e13d3d93', 'x-runtime': '0.021870', 'x-xss-protection': '0', 'cf-cache-status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=eGJhgyRXZyJMYjP6jEp8ClZosuLkCMFf0xOz1ItaHYfPLEaSPVS0RzHI4pygRPoQWk%2FYVLH%2BqsqZCeoPy%2Ffvb5CeijlryNr7AmZTIU6ylEWoQgkushAVKvIrc9a9ong%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '92a872900df13fb7-SIN', 'alt-svc': 'h3=":443"; ma=86400', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=16344&amp;min_rtt=16344&amp;rtt_var=8172&amp;sent=6&amp;recv=7&amp;lost=0&amp;retrans=1&amp;sent_bytes=2882&amp;recv_bytes=875&amp;delivery_rate=103183&amp;cwnd=246&amp;unsent_bytes=0&amp;cid=a85b1ca9af424b56&amp;ts=340&amp;x=0"'} 
+ body={"message":"Invalid token"} 
+ </msg>
+<msg time="2025-04-03T19:07:44.611329" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.186639" elapsed="0.424706"/>
+</kw>
+<return>
+<value>${response.status_code}</value>
+<value>${response.json()}</value>
+<status status="PASS" start="2025-04-03T19:07:44.611397" elapsed="0.000037"/>
+</return>
+<msg time="2025-04-03T19:07:44.611901" level="INFO">${status} = 401</msg>
+<msg time="2025-04-03T19:07:44.611931" level="INFO">${response_body} = {'message': 'Invalid token'}</msg>
+<var>${status}</var>
+<var>${response_body}</var>
+<status status="PASS" start="2025-04-03T19:07:44.186332" elapsed="0.425611"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-04-03T19:07:44.612231" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${status}</arg>
+<arg>401</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.612128" elapsed="0.000137"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response_body}</arg>
+<arg>message</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.612367" elapsed="0.000084"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_body["message"]}</arg>
+<arg>${expected_message}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-04-03T19:07:44.612541" elapsed="0.000262"/>
+</kw>
+<tag>list</tag>
+<status status="PASS" start="2025-04-03T19:07:44.181583" elapsed="0.431318"/>
+</test>
+<status status="FAIL" start="2025-04-03T19:07:42.222854" elapsed="2.390729"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="4" fail="1" skip="0">list</stat>
+</tag>
+<suite>
+<stat name="Listuser.Test" id="s1" pass="4" fail="1" skip="0">Listuser.Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
